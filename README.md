@@ -20,12 +20,12 @@ _my own notes:_
 
 ### 3. The overview of every person can be filtered by movies ✅
 
-### 4. The overview must consider responsiveness
+### 4. The overview must consider responsiveness ✅
 
 ### 5. A Homeworld in a Card should link onto a detail page with several information about the planet
 
 _my own notes:_
-
+- Needs routing ✅
 - Display a planet in the back?
 - Maybe something interactive?
 
