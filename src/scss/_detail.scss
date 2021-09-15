@@ -1,0 +1,50 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-md;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 100%);
+  transition: $transition-all-slow-ease;
+  z-index: 2;
+  width: 100%;
+
+  @media (min-width: $md) {
+    width: auto;
+    padding: 0;
+  }
+
+  &--open {
+    transform: translate(-50%, -50%);
+  }
+
+  &__container {
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 2;
+  }
+
+  &__title {
+    background: $star-wars-white-light;
+    border-radius: 25px;
+    font-size: $font-md;
+    margin-bottom: $spacing-md;
+    padding: $spacing-sm;
+  }
+
+  &__item {
+    background: $star-wars-white-light;
+    border-radius: 25px;
+    font-size: $font-sm;
+    margin: 0 auto $spacing-md;
+    padding: $spacing-sm;
+    width: fit-content;
+  }
+}

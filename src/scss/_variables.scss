@@ -11,9 +11,16 @@ $spacing-xxl: 64px;
 
 $star-wars-yellow: #ffe81f;
 $star-wars-black: #050505;
-$star-wars-white: #eee;
-$star-wars-grey: #333;
+$star-wars-white: #eeeeee;
+$star-wars-white-light: rgba(238, 238, 238, .85);
+$star-wars-grey: #252525;
 $star-wars-red: #9f0613;
+
+$planet-light: #ffe079;
+$planet-medium-light: #f1851d;
+$planet: #ff7b00;
+$planet-medium-dark: #b62714;
+$planet-dark: #911662;
 
 $font-sm: 1rem;
 $font-md: 1.5rem;
@@ -21,3 +28,4 @@ $font-lg: 3rem;
 $font-xl: 4rem;
 
 $transition-all-ease: all 0.3s ease;
+$transition-all-slow-ease: all 1s ease;

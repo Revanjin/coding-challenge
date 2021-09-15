@@ -16,7 +16,7 @@ _my own notes:_
 - Gender ✅
 - Homeworld ✅
   _my own notes:_
-- display gender with font awesome ✅
+- use font awesome ✅
 
 ### 3. The overview of every person can be filtered by movies ✅
   _my own notes:_

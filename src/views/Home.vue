@@ -17,30 +17,78 @@
 import CardList from "../components/CardList.vue";
 import FilterList from "../components/FilterList.vue";
 import LoadingSpinner from "../components/LoadingSpinner.vue";
+import { API_URL } from "../config/API_URL";
 
 export default {
   name: "Home",
   components: { CardList, FilterList, LoadingSpinner },
   data() {
     return {
-      baseUrl: "https://swapi.dev/api/people/",
-      movieUrl: "https://swapi.dev/api/films/",
-      planetUrl: "https://swapi.dev/api/planets/",
+      peopleUrl: API_URL.people,
+      movieUrl: API_URL.movies,
+      planetUrl: API_URL.planets,
       cards: [],
       movies: [],
       people: [],
       planets: [],
       filter: [{ title: "Reset Filter", url: null }],
       isLoading: true,
-      showFilter: false,
     };
   },
   created() {
     this.initiallySetupMoviesList(this.movieUrl);
     this.initiallySetupPlanetsList(this.planetUrl);
-    this.initiallySetupPeopleList(this.baseUrl);
+    this.initiallySetupPeopleList(this.peopleUrl);
   },
   methods: {
+    initiallySetupMoviesList(url) {
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          this.movies = data.results;
+        });
+    },
+    initiallySetupPlanetsList(url) {
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          data.results.forEach((planet) => {
+            this.planets.push({ name: planet.name, url: planet.url });
+          });
+
+          if (data.next != null) {
+            this.initiallySetupPlanetsList(data.next);
+          }
+        });
+    },
+    initiallySetupPeopleList(url) {
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw Error("error while fetching", url, response);
+          }
+
+          return response.json();
+        })
+        .then((data) => {
+          data.results.forEach((person) => {
+            person.planet = this.planets.find(
+              (planet) => person.homeworld == planet.url
+            );
+
+            this.people.push(person);
+          });
+
+          if (data.next != null) {
+            this.initiallySetupPeopleList(data.next);
+          } else {
+            this.cards = this.people;
+
+            this.setFilterList();
+            this.isLoading = false;
+          }
+        });
+    },
     toggleFilter() {
       var scrollContainer = document.querySelector(".filter__scroll-container");
       var container = document.querySelector(".filter__container");
@@ -59,75 +107,17 @@ export default {
           return person.films.includes(url) ? person : "";
         });
       } else {
-        console.log("Reset");
         this.cards = this.people;
       }
+
+      setTimeout(() => {
+        this.toggleFilter();
+      }, 300);
     },
     setFilterList() {
       this.movies.forEach((movie) => {
         this.filter.push({ title: movie.title, url: movie.url });
       });
-    },
-    initiallySetupMoviesList(url) {
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw Error("error while fetching", url, response);
-          }
-
-          return response.json();
-        })
-        .then((data) => {
-          this.movies = data.results;
-        });
-    },
-    initiallySetupPlanetsList(url) {
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw Error("error while fetching", url, response);
-          }
-
-          return response.json();
-        })
-        .then((data) => {
-          data.results.forEach((planet) => {
-            this.planets.push({ name: planet.name, url: planet.url });
-          });
-
-          if (data.next != null) {
-            this.initiallySetupPlanetsList(data.next);
-          }
-        });
-    },
-    initiallySetupPeopleList(url) {
-      fetch(url)
-        .then((response) => {
-          if (!response.ok) {
-            throw Error("error while fetching", url, response);
-          }
-          console.log("response was ok");
-          return response.json();
-        })
-        .then((data) => {
-          data.results.forEach((person) => {
-            person.planetName = this.planets.find(
-              (planet) => person.homeworld == planet.url
-            );
-
-            this.people.push(person);
-          });
-
-          if (data.next != null) {
-            this.initiallySetupPeopleList(data.next);
-          } else {
-            this.cards = this.people;
-            console.log(this.people);
-            // in localstorage oder so speichern, mit lebenszeit von 2h oder so
-            this.setFilterList();
-            this.isLoading = false;
-          }
-        });
     },
   },
 };

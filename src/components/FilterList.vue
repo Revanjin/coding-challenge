@@ -4,14 +4,16 @@
   </div>
   <div class="filter__container">
     <div class="filter__scroll-container">
-      <div v-for="(filter, index) in filters" :key="index">
-        <FilterButton
-          :class="{ 'card--active': currentIndex === index }"
-          :filter="filter"
-          :index="index"
-          @filter-cards="$emit('filter-cards', filter.url)"
-          @set-active="setActive"
-        />
+      <div class="filter__overflow-container">
+        <div v-for="(filter, index) in filters" :key="index">
+          <FilterButton
+            :class="{ 'button--active': currentIndex === index }"
+            :filter="filter"
+            :index="index"
+            @filter-cards="$emit('filter-cards', filter.url)"
+            @set-active="setActive"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -28,6 +30,7 @@ export default {
   components: {
     FilterButton,
   },
+  emits: ["filter-cards", "toggle-filter"],
   props: {
     filters: Array,
   },

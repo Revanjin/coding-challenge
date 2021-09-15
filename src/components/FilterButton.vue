@@ -1,6 +1,6 @@
 <template>
   <div
-    class="filter-button"
+    class="button"
     @click="
       $emit('filter-cards', filter.url);
       $emit('set-active', index);
@@ -14,8 +14,9 @@
 export default {
   name: "FilterButton",
   props: {
-    filter: Array,
+    filter: Object,
     index: Number,
   },
+  emits: ["filter-cards", "set-active"],
 };
 </script>

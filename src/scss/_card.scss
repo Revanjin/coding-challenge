@@ -1,5 +1,7 @@
 .card {
   background: rgba(255, 232, 31, 0.2);
+  display: flex;
+  flex-direction: column;
   margin-bottom: $spacing-md;
   margin-left: -$spacing-sm;
   padding: $spacing-md;
@@ -18,16 +20,28 @@
 
   &:hover {
     background: rgba(255, 232, 31, 0.75);
+
+    &::before {
+      clip-path: polygon(100% 0, 100% 0%, 100% 100%, 0 100%, 0 0);
+    }
   }
 
   &:before {
     content: "";
     background: rgba(240, 240, 240, 1);
+    clip-path: polygon(
+      calc(100% - 35px) 0,
+      100% calc(0% + 35px),
+      100% 100%,
+      0 100%,
+      0 0
+    );
     top: $spacing-sm;
     left: $spacing-sm;
     width: 100%;
     height: 100%;
     position: absolute;
+    transition: $transition-all-ease;
     z-index: -1;
   }
 
@@ -66,32 +80,8 @@
     }
   }
 
-  &__planet {
-    background: #ffe81fdf;
-    border-left: 3px solid transparent;
-    cursor: pointer;
-    color: $star-wars-black;
-    text-decoration: none;
-    margin-top: $spacing-md;
-    padding: $spacing-sm;
-    position: relative;
-    transition: all 0.3s ease;
-
-    &:before {
-      content: "";
-      background: $star-wars-black;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      z-index: -1;
-      left: $spacing-sm;
-    }
-
-    @media (min-width: $md) {
-      &:hover {
-        background: #ffe81fff;
-        border-left: 3px solid $star-wars-red;
-      }
-    }
+  &__placeholder {
+    height: 0;
+    padding: 0;
   }
 }

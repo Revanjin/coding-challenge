@@ -1,13 +1,20 @@
 .filter {
   &-button {
     background-color: #eee;
-    border-radius: 5px;
     cursor: pointer;
-    padding: $spacing-md;
+    padding: $spacing-sm $spacing-md;
     transition: $transition-all-ease;
     width: 100%;
     user-select: none;
     position: relative;
+
+    @media (min-width: $lg) {
+      width: fit-content;
+
+      &:not(:last-child) {
+        margin-right: $spacing-md;
+      }
+    }
 
     &:hover {
       background-color: #888;
@@ -27,23 +34,38 @@
   &__toggle {
     background: $star-wars-white;
     border-radius: 4px;
-    font-size: $font-md;
+    font-size: $font-sm;
     margin: $spacing-md 0;
-    padding: $spacing-md;
     width: auto;
   }
 
+  &__overflow-container {
+    justify-content: space-between;
+    width: 100%;
+
+    @media (min-width: $md) {
+      display: flex;
+    }
+  }
+
   &__scroll-container {
+    padding: 8px 8px 8px 0;
     width: 100%;
     transform: translateY(-100%);
     transition: $transition-all-ease;
 
+    @media (min-width: $md) {
+      display: flex;
+    }
+
     &--open {
       transform: translateY(0);
     }
-
-    > div {
-      width: 100%;
+    .button {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1px;
     }
   }
 }
