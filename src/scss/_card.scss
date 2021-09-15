@@ -42,6 +42,10 @@
     }
   }
 
+  &__gender {
+    margin-bottom: 16px;
+  }
+
   &__headline {
     font-size: $font-md;
   }
@@ -62,15 +66,12 @@
     }
   }
 
-  &__link {
-    color: $star-wars-black;
-    text-decoration: none;
-  }
-
   &__planet {
     background: #ffe81fdf;
+    border-left: 3px solid transparent;
     cursor: pointer;
     color: $star-wars-black;
+    text-decoration: none;
     margin-top: $spacing-md;
     padding: $spacing-sm;
     position: relative;
@@ -89,6 +90,7 @@
     @media (min-width: $md) {
       &:hover {
         background: #ffe81fff;
+        border-left: 3px solid $star-wars-red;
       }
     }
   }
