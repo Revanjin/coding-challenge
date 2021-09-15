@@ -1,0 +1,51 @@
+@mixin stroke-width($property) {
+  -webkit-text-stroke-width: $property;
+  -moz-text-stroke-width: $property;
+}
+
+@mixin stroke-color($property) {
+  -webkit-text-stroke-color: $property;
+  -moz-text-stroke-color: $property;
+}
+
+.headline__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.headline {
+  font-size: $font-lg;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: $spacing-md;
+  text-transform: uppercase;
+  animation-name: headline-slide;
+  animation-duration: 2s;
+
+  @media (min-width: $md) {
+    letter-spacing: 6px;
+  }
+
+  &--stroke {
+    @include stroke-width(1px);
+    @include stroke-color($star-wars-yellow);
+    color: transparent;
+  }
+
+  &--shadow {
+    text-shadow: 6px 6px $star-wars-black;
+  }
+}
+
+@keyframes headline-slide {
+  from {
+    margin-top: 50px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
