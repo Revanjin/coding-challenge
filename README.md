@@ -19,18 +19,18 @@ _my own notes:_
 - display gender with font awesome ✅
 
 ### 3. The overview of every person can be filtered by movies ✅
+  _my own notes:_
+- click on filter should close the filter list ✅
 
-### 4. The overview must consider responsiveness
+### 4. The overview must consider responsiveness ✅
 
-### 5. A Homeworld in a Card should link onto a detail page with several information about the planet
-
-_my own notes:_
-
-- Display a planet in the back?
-- Maybe something interactive?
-
-### 6. Back button :) (back to an unfiltered list)
+### 5. A Homeworld in a Card should link onto a detail page with several information about the planet ✅
 
 _my own notes:_
+- Display a planet in the back? ✅
+- Maybe something interactive? ✅
 
+### 6. Back button :) (back to an unfiltered list) ✅
+
+_my own notes:_
 - should take a month. _inside joke_
