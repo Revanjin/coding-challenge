@@ -77,7 +77,8 @@ export default {
     var url = window.location.hash;
     var index = url.lastIndexOf("/");
     var query = url.substr(index + 1);
-    console.log(query);
+
+    document.querySelector("body").style.overflow = "hidden";
 
     this.fetchPlanets(this.planetUrl, query);
   },

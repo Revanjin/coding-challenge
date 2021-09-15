@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     setActive(index) {
-      console.log(index);
       this.currentIndex = index;
     },
   },

@@ -1,5 +1,5 @@
 .card {
-  background: rgba(255, 232, 31, 0.2);
+  background: $star-wars-white-dark;
   display: flex;
   flex-direction: column;
   margin-bottom: $spacing-md;
@@ -13,6 +13,7 @@
   @media (min-width: $md) {
     flex: 1 0 31%;
     margin-right: $spacing-lg;
+
     &:nth-child(3n) {
       margin-right: 0;
     }
@@ -62,22 +63,6 @@
 
   &__headline {
     font-size: $font-md;
-  }
-
-  &__icon {
-    font-size: $font-md;
-
-    &--male {
-      color: #993030;
-    }
-
-    &--female {
-      color: #303099;
-    }
-
-    &--divers {
-      color: #309930;
-    }
   }
 
   &__placeholder {
