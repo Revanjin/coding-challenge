@@ -8,6 +8,7 @@
     $planet-dark 100%
   );
   border-radius: 50%;
+  cursor: pointer;
   width: 350px;
   height: 350px;
   transform-origin: center center;
@@ -31,13 +32,13 @@
 }
 
 .tooltip {
-  position: absolute;
-  width: 200px;
-  padding: 15px;
-  top: -50px;
   left: 50%;
   opacity: 1;
+  padding: 15px;
+  position: absolute;
   transition: $transition-all-slow-ease;
+  user-select: none;
+  white-space: nowrap;
   z-index: 2;
 
   &__container {

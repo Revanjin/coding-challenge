@@ -1,5 +1,6 @@
 .detail {
   align-items: center;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,12 +10,14 @@
   top: 50%;
   transform: translate(-50%, 100%);
   transition: $transition-all-slow-ease;
+  user-select: none;
   width: 100%;
   z-index: 2;
 
   @media (min-width: $md) {
     padding: 0;
     width: auto;
+    user-select: auto;
   }
 
   &--open {
