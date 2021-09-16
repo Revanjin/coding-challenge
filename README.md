@@ -1,5 +1,16 @@
 # coding-challenge-swapi
 
+## Solution setup:
+_(Tested with Node 12.15.0)_
+
+### 1. Clone this project
+
+### 2. Inside the project folder run  `npm i`
+
+### 3. Start the project  `npm run serve`
+
+
+
 ## Tasks:
 
 ### 1. An overview of every person in the Star Wars Universe ✅
